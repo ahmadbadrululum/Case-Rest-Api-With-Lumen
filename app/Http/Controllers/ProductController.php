@@ -47,19 +47,36 @@ class ProductController extends Controller
                 'success'=> true,
                 'message'=> 'Product Insert Success !!',
                 'data'=> $product
-            ], 200);
+            ], 201);
         }else {
             return response()->json([
                 'success'=> false,
                 'message'=> 'Product Insert Fail !!',
                 'data'=> ''
-            ], 201);
+            ], 400);
         }
 
     }
 
-    public function update(){
-        dd('oke');
+    public function update(Request $request, $id){
+        $product= Product::find($id);
+        if ($product) {
+            $product->name = $request->name;
+            $product->price = $request->price;
+            $product->category = $request->category;  
+            $product->save();
+            return response()->json([
+                'success'=> true,
+                'message'=> 'Product Updated Successfully !!',
+                'data'=> $product
+            ], 200);
+        }else {
+            return response()->json([
+                'success'=> false,
+                'message'=> 'Product not found',
+                'data'=> ''
+            ], 404);
+        }
     }
 
     public function delete(){
