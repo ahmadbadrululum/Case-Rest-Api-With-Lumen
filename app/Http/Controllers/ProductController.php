@@ -17,6 +17,24 @@ class ProductController extends Controller
         ], 200);
     }
 
+    public function getId($id){
+        $product = Product::find($id);
+        if ($product) {
+            return response()->json([
+                'success'=> true,
+                'message'=> 'Product found',
+                'data'=> $product
+            ], 200);
+        }else {
+            return response()->json([
+                'success'=> false,
+                'message'=> 'Product not found',
+                'data'=> ''
+            ], 404);
+        }
+       
+    }
+
     public function store(Request $request){
         $product = Product::create([
             'name'=>$request->name,
@@ -42,7 +60,6 @@ class ProductController extends Controller
 
     public function update(){
         dd('oke');
-        
     }
 
     public function delete(){
