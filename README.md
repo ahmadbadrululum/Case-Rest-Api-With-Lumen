@@ -1,24 +1,41 @@
-# Lumen PHP Framework
+# CRUD api lumen
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
+This service is handler for ticket support.
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+Stack use by this service is:
+- Lumen
+- MongoDB
 
-## Official Documentation
+## Endpoint
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
+GET /api/product
 
-## Contributing
+Mengambil data seluruh produk
 
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+GET /api/product/:id
 
-## Security Vulnerabilities
+Mengambil data sesuai dengan id produk
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
 
-## License
+POST /api/product
 
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Membuat produk baru
+
+Parameter body request:
+
+```
+{
+    "name": "Lenovo",
+    "price": 10000,
+    "category": "Electronic",
+}
+```
+
+PUT /api/product/:id
+
+Mengupdate data produk sesuai id
+
+
+DELETE /api/product/:id
+
+Menghapus data produk
