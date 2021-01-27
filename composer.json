@@ -6,7 +6,9 @@
     "type": "project",
     "require": {
         "php": "^7.2.5",
-        "laravel/lumen-framework": "^7.0"
+        "jenssegers/mongodb": "dev-develop",
+        "laravel/lumen-framework": "^7.0",
+        "mongodb/mongodb": "^1.8"
     },
     "require-dev": {
         "fzaninotto/faker": "^1.9.1",
@@ -30,7 +32,10 @@
     "config": {
         "preferred-install": "dist",
         "sort-packages": true,
-        "optimize-autoloader": true
+        "optimize-autoloader": true,
+        "platform": {
+            "ext-mongo": "1.6.16"
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
