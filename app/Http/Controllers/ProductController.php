@@ -7,7 +7,17 @@ use App\Models\Product;
 class ProductController extends Controller
 {
     
-   public function store(Request $request){
+    public function index(){
+        $product = Product::all();
+        
+        return response()->json([
+            'success'=> true,
+            'total' => count($product),
+            'data'=> $product
+        ], 200);
+    }
+
+    public function store(Request $request){
         $product = Product::create([
             'name'=>$request->name,
             'price'=>$request->price,
@@ -27,8 +37,17 @@ class ProductController extends Controller
                 'data'=> ''
             ], 201);
         }
+
     }
 
-   
+    public function update(){
+        dd('oke');
+        
+    }
+
+    public function delete(){
+        dd('oke');        
+        
+    }
     
 }
