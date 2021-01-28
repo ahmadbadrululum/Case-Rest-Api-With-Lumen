@@ -30,7 +30,6 @@ class PostController extends Controller{
             ];
             return response()->json($responseError, 500);
         }
-       
     }
 
     public function store(Request $request){        
@@ -46,6 +45,24 @@ class PostController extends Controller{
             return response()->json([
                 'success'=> true,
                 'data'=> $dataRequest 
+            ], 200);
+
+        } catch (\Exception $e) {
+            $responseError = [
+                'success'=> false,
+                'message' => $e->getMessage()
+            ];
+            return response()->json($responseError, 500);
+        }
+    }
+
+    public function getId(string $id){
+        try {
+            $response = $this->client->request('get', 'post/'.$id.'.json');
+            $result = $response->getBody()->getContents();
+            return response()->json([
+                'success'=> true,
+                'data'=> json_decode($result, true) 
             ], 200);
 
         } catch (\Exception $e) {
