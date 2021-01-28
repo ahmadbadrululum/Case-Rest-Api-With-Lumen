@@ -19,4 +19,5 @@ $router->group(['prefix'=> 'api'], function () use ($router){
     $router->post('/post', 'PostController@store');
     $router->get('/post', 'PostController@index');
     $router->get('/post/{id}', 'PostController@getId');
+    $router->put('/post/{id}', 'PostController@update');
 });

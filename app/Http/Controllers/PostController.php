@@ -73,4 +73,27 @@ class PostController extends Controller{
             return response()->json($responseError, 500);
         }
     }
+
+    public function update(Request $request, $id){      
+        try {
+            $dataRequest = [
+                'title' => $request->title,
+                'content' => $request->content,
+                'author' => $request->author,
+            ];
+            $response = $this->client->request('PUT', 'post/'.$id.'.json',[
+                'json' => $dataRequest
+            ]);
+            return response()->json([
+                'success'=> true,
+                'data'=> $dataRequest
+            ], 200);
+        } catch (\Exception $e) {
+            $responseError = [
+                'success'=> false,
+                'message' => $e->getMessage()
+            ];
+            return response()->json($responseError, 500);
+        }
+    }
 }
