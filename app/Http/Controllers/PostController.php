@@ -22,13 +22,8 @@ class PostController extends Controller{
                 'success'=> true,
                 'data'=> json_decode($result, true) 
             ], 200);
-
         } catch (\Exception $e) {
-            $responseError = [
-                'success'=> false,
-                'message' => $e->getMessage()
-            ];
-            return response()->json($responseError, 500);
+            return $this->responseError($e->getMessage());
         }
     }
 
@@ -48,11 +43,7 @@ class PostController extends Controller{
             ], 200);
 
         } catch (\Exception $e) {
-            $responseError = [
-                'success'=> false,
-                'message' => $e->getMessage()
-            ];
-            return response()->json($responseError, 500);
+            return $this->responseError($e->getMessage());
         }
     }
 
@@ -66,11 +57,7 @@ class PostController extends Controller{
             ], 200);
 
         } catch (\Exception $e) {
-            $responseError = [
-                'success'=> false,
-                'message' => $e->getMessage()
-            ];
-            return response()->json($responseError, 500);
+            return $this->responseError($e->getMessage());
         }
     }
 
@@ -89,11 +76,7 @@ class PostController extends Controller{
                 'data'=> $dataRequest
             ], 200);
         } catch (\Exception $e) {
-            $responseError = [
-                'success'=> false,
-                'message' => $e->getMessage()
-            ];
-            return response()->json($responseError, 500);
+            return $this->responseError($e->getMessage());
         }
     }
 
@@ -105,11 +88,7 @@ class PostController extends Controller{
                 'message'=> 'delete succesfully',
             ], 200);
         } catch (\Exception $e) {
-            $responseError = [
-                'success'=> false,
-                'message' => $e->getMessage()
-            ];
-            return response()->json($responseError, 500);
+            return $this->responseError($e->getMessage());
         }
     }
 }
