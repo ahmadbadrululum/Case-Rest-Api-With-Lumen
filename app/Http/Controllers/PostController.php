@@ -7,18 +7,21 @@ use GuzzleHttp\Client;
 
 class PostController extends Controller{
 
-    public function store(Request $request){
-        $client = new Client([
+    private $client;
+    public function __construct(){
+        $this->client = new Client([
             'base_uri' => 'https://testing-api-e4ef6-default-rtdb.firebaseio.com'
-        ]);
-        
+        ]);   
+    }
+
+    public function store(Request $request){        
         try {
             $dataRequest = [
                 'title' => $request->title,
                 'content' => $request->content,
                 'author' => $request->author,
             ];
-            $response = $client->request('post', 'post.json',[
+            $response = $this->client->request('post', 'post.json',[
                 'json' => $dataRequest
             ]);
             return response()->json([
@@ -31,7 +34,7 @@ class PostController extends Controller{
                 'success'=> false,
                 'message' => $e->getMessage()
             ];
-            return response()->json($responseError, 200);
+            return response()->json($responseError, 500);
         }
     }
 }
