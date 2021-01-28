@@ -25,4 +25,29 @@ class PostTest extends TestCase
     }
 
 
+    /**
+     * /Posts [POST]
+     */
+    public function testShouldCreatePost(){
+
+        $parameters = [
+            'author' => 'badrules',
+            'title' => 'Berita Hari ini',
+            'content' => 'Depok hujan angin ',
+        ];
+
+        $this->post("api/post", $parameters, []);
+        $this->seeStatusCode(200);
+        $this->seeJsonStructure(
+            ['data' =>
+                 [
+                    'author',
+                    'title',
+                    'content',
+                ]
+            ]    
+        );
+        
+    }
+
 }
