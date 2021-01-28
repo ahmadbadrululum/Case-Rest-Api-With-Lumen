@@ -1,24 +1,39 @@
-# Lumen PHP Framework
+# CRUD api lumen firebase database realtime
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
+Stack use by this service is:
+- Lumen
+- Firebase database realtime
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+## Endpoint
 
-## Official Documentation
+GET /api/post
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
+Mengambil data seluruh post
 
-## Contributing
+GET /api/post/:id
 
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Mengambil data sesuai dengan id post
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+POST /api/post
 
-## License
+Membuat post baru
 
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Parameter body request:
+
+```
+{
+    "title" => "Berita Hari ini"
+    "content" => "Jabodetabek diprediksi hujan oleh bmkg"
+    "author" => "Badrules"
+}
+```
+
+PUT /api/post/:id
+
+Mengupdate data post sesuai id
+
+
+DELETE /api/post/:id
+
+Menghapus data post
