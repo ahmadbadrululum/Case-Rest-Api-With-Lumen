@@ -49,5 +49,27 @@ class PostTest extends TestCase
         );
         
     }
+    
+    /**
+     * /api/post/id [PUT]
+     */
+    public function testShouldUpdatePost(){
 
+        $parameters = [
+            'author' => 'badrules',
+            'title' => 'Jakarta Cerah Berawan',
+            'content' => 'BMKG prediksi Jakarta cerah',
+        ];
+        $this->put("api/post/-MS5FISc90MKUsdQ6tts", $parameters, []);
+        $this->seeStatusCode(200);
+        $this->seeJsonStructure(
+            ['data' =>
+                 [
+                    'author',
+                    'title',
+                    'content',
+                ]
+            ]    
+        );
+    }
 }
