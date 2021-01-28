@@ -14,6 +14,25 @@ class PostController extends Controller{
         ]);   
     }
 
+    public function index(Request $request){
+        try {
+            $response = $this->client->request('get', 'post.json');
+            $result = $response->getBody()->getContents();
+            return response()->json([
+                'success'=> true,
+                'data'=> json_decode($result, true) 
+            ], 200);
+
+        } catch (\Exception $e) {
+            $responseError = [
+                'success'=> false,
+                'message' => $e->getMessage()
+            ];
+            return response()->json($responseError, 500);
+        }
+       
+    }
+
     public function store(Request $request){        
         try {
             $dataRequest = [

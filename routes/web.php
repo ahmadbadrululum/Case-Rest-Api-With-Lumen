@@ -15,5 +15,7 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-
-$router->post('/api/post', 'PostController@store');
+$router->group(['prefix'=> 'api'], function () use ($router){
+    $router->post('/post', 'PostController@store');
+    $router->get('/post', 'PostController@index');
+});
