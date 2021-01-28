@@ -17,3 +17,6 @@ $router->get('/', function () use ($router) {
 
 
 $router->get('/get-data-filter', 'Case7Controller@getDataFilter');
+
+$router->post('/api/register-tes', 'Case6Controller@getHandleResponse');
+$router->post('/api/login-tes', 'Case6Controller@getHandleResponseLogin');
