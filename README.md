@@ -1,7 +1,5 @@
 # CRUD api lumen
 
-This service is handler for ticket support.
-
 Stack use by this service is:
 - Lumen
 - MongoDB
