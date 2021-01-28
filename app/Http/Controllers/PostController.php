@@ -96,4 +96,20 @@ class PostController extends Controller{
             return response()->json($responseError, 500);
         }
     }
+
+    public function destroy($id, array $data=[]){      
+        try {
+            $this->client->request('delete', 'post/'.$id.'.json', $data);
+            return response()->json([
+                'success'=> true,
+                'message'=> 'delete succesfully',
+            ], 200);
+        } catch (\Exception $e) {
+            $responseError = [
+                'success'=> false,
+                'message' => $e->getMessage()
+            ];
+            return response()->json($responseError, 500);
+        }
+    }
 }
